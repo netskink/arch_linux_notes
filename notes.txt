@@ -40,3 +40,84 @@ numid=15,iface=MIXER,name='Master Playback Volume'
 
 This works
 amixer -c 0 sset 'Master',0 2dB+
+
+
+
+
+Make sure you install tp_smapi to conserve the battery - check the wiki page 
+pacman -Syy
+
+When you make a change to /etc/pacman.conf, like say you enable the multilib repo,
+you need to issue the following commands:
+# pacman -Syu
+and then
+# pacman -Syy
+
+Or you can simply do
+# pacman -Syyu
+
+
+Total Installed Size:   51.79 MiB
+
+:: Proceed with installation? [Y/n] y
+(1/1) checking keys in keyring                          [#############################] 100%
+(1/1) checking package integrity                        [#############################] 100%
+(1/1) loading package files                             [#############################] 100%
+(1/1) checking for file conflicts                       [#############################] 100%
+(1/1) checking available disk space                     [#############################] 100%
+(1/1) installing xen                                    [#############################] 100%
+===> IMPORTANT NOTICE:
+
+In order to complete the installation, and enable Xen,
+at the very least you must:
+1. Edit your GRUB2 config files as specified at
+    https://wiki.archlinux.org/index.php/Xen#Bootloader_Configuration
+2. Issue the following commands to allow you to create and start VMs:
+    systemctl enable xenstored.service
+    systemctl enable xenconsoled.service
+3. If you want some domains to automatically start up/shutdown, run the following:
+    systemctl enable xendomains.service
+
+For more information refer to the Wiki:
+    https://wiki.archlinux.org/index.php/Xen
+
+
+Note: If you are upgrading from one of the previous 4.2 xen builds, and are having issues
+      with graphics card passthrough, the default device model used has changed and the 
+      newer model can sometimes have issues. To resolve, add (or change ) the following
+      line into your domain config file:
+         device_model_version = "qemu-xen-traditional"
+
+Optional dependencies for xen
+    xen-docs: Official Xen Documentation
+    openvswitch: Optional Networking support
+
+##########################################
+To install a AUR package.
+1. Download the tar ball.
+2. Copy it to /root/packages
+3. untar it.
+4. cd to the directory
+5. # makepkg -s --asroot
+6. install the built package. pacman -U <something.pkg.tar.z>
+
+#########################################
+To update the rewrite of the interfaces from wlp3s0 to wlan0
+Add a file to udev in 
+/etc/udev/rules.d
+named 70-my-net-names.rules
+The contents should look something like this:
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}="00:1d:d9:27:68:73",NAME="wlan0"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}="00:c0:ca:6d:23:eb",NAME="wlan1"
+
+##############################3
+
+mute is 121
+vol up is 123
+vol down is 122
+
+keycode 121 = XF86AudioMute NoSymbol XF86AudioMute
+keycode 122 = XF86AudioLowerVolume NoSymbol XF86AudioLowerVolume
+keycode 123 = XF86AudioRaiseVolume NoSymbol XF86AudioRaiseVolume
+
+
