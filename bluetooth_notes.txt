@@ -1,0 +1,57 @@
+i[root@x200 system]# hciconfig
+hci0:   Type: BR/EDR  Bus: USB
+        BD Address: 90:4C:E5:DB:E9:77  ACL MTU: 1021:8  SCO MTU: 64:1
+        DOWN 
+        RX bytes:484 acl:0 sco:0 events:20 errors:0
+        TX bytes:323 acl:0 sco:0 commands:20 errors:0
+
+[root@x200 system]# hciconfig hci0 up
+[root@x200 system]# hciconfig hci0 up
+[root@x200 system]# hciconfig scan
+hci0:   Type: BR/EDR  Bus: USB
+        BD Address: 90:4C:E5:DB:E9:77  ACL MTU: 1021:8  SCO MTU: 64:1
+        UP RUNNING 
+        RX bytes:968 acl:0 sco:0 events:40 errors:0
+        TX bytes:646 acl:0 sco:0 commands:40 errors:0
+
+[root@x200 system]# hcitool scan
+Scanning ...
+        00:1A:7D:12:36:B9       SoundBot SB220
+[root@x200 system]# bluetoothctl
+[bluetooth]# devices
+[bluetooth]# pair  00:1A:7D:12:36:B9
+Device  00:1A:7D:12:36:B9 not available
+[bluetooth]# devices
+[bluetooth]# pair  00:1A:7D:12:36:B9
+Device  00:1A:7D:12:36:B9 not available
+[bluetooth]# 
+*******************************
+
+[bluetooth]# pairable on
+Changing pairable on succeeded
+[bluetooth]# scan on
+Discovery started
+[CHG] Controller 90:4C:E5:DB:E9:77 Discovering: yes
+[NEW] Device 2C:D0:5A:82:FD:FD SVL-RARAD-L1
+[NEW] Device 00:1A:7D:12:36:B9 SoundBot 
+[CHG] Device 00:1A:7D:12:36:B9 Name: SoundBot SB220
+[CHG] Device 00:1A:7D:12:36:B9 Alias: SoundBot SB220
+[bluetooth]# pair 00:1A:7D:12:36:B9
+Attempting to pair with 00:1A:7D:12:36:B9
+[CHG] Device 00:1A:7D:12:36:B9 Connected: yes
+Pairing successful
+[CHG] Device 00:1A:7D:12:36:B9 UUIDs has unsupported type
+[CHG] Device 00:1A:7D:12:36:B9 Paired: yes
+[CHG] Device 00:1A:7D:12:36:B9 Connected: no
+[bluetooth]# connect 00:1A:7D:12:36:B9
+Attempting to connect to 00:1A:7D:12:36:B9
+[CHG] Device 00:1A:7D:12:36:B9 Connected: yes
+Failed to connect: org.bluez.Error.Failed
+[CHG] Device 00:1A:7D:12:36:B9 UUIDs has unsupported type
+[CHG] Device 00:1A:7D:12:36:B9 Connected: no
+[CHG] Device 2C:D0:5A:82:FD:FD RSSI: -74
+[CHG] Device 2C:D0:5A:82:FD:FD RSSI: -65
+[CHG] Device 2C:D0:5A:82:FD:FD RSSI: -74
+[CHG] Device 2C:D0:5A:82:FD:FD RSSI: -86
+[CHG] Device 2C:D0:5A:82:FD:FD RSSI: -69
+[bluetooth]# 

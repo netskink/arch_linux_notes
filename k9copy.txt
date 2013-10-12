@@ -1,0 +1,10 @@
+mencoder
+libdvdcss
+kdepimlibs
+
+gst-plugins-good
+
+gstreamer
+pacman -S kdebase-runtime xine-lib dvd+rw-tools dvdauthor
+automoc4 cmake
+

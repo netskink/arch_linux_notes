@@ -1,0 +1,42 @@
+pacman -Qo which glxgears
+
+for dorking with sound. Use "aplay -l" and then ~/.asoundrc to select which to uuse. 7 is hdmi, 0 is builtin.
+
+pacman -Syy will update your databases.
+
+
+After big updates, you need to take care of the config files.
+https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files
+
+
+ >> If you have an NVIDIA card that supports libvdpau or Broadcom Crystal HD chips,
+ >> uncomment EnableLinuxHWVideoDecode=1 from /etc/adobe/mms.cfg.
+ >> If you run into problems, please contact nVidia or Broadcom along with your system config info / driver version.
+ >> 
+Optional dependencies for flashplugin
+    libvdpau: GPU acceleration on Nvidia card [installed]
+
+
+
+Notes about amixer
+
+To get settings use 
+amixer controls
+in my case 15 corresponds to master playback volume
+I can get the value via
+$ amixer -c 0 cget numid=15    
+
+And I can set it by value, percentage or adjust from current
+$ amixer -c 0 cset numid=15 50
+$ amixer -c 0 cset numid=15 75%
+$ amixer -c 0 cset numid=15 20dB-   
+
+cget will work also.
+[davis@x200 ~]$ amixer -c 0 cset numid=15,iface=MIXER,name='Master Playback Volume' 2dB 
+numid=15,iface=MIXER,name='Master Playback Volume'
+  ; type=INTEGER,access=rw---R--,values=1,min=0,max=74,step=0
+  : values=2
+  | dBscale-min=-74.00dB,step=1.00dB,mute=0
+
+This works
+amixer -c 0 sset 'Master',0 2dB+
