@@ -16,6 +16,7 @@ https://wiki.archlinux.org/index.php/Pacnew_and_Pacsave_Files
 Optional dependencies for flashplugin
     libvdpau: GPU acceleration on Nvidia card [installed]
 
+audacious good mp3 audio music player. similar to winamp.
 
 
 Notes about amixer
@@ -120,4 +121,24 @@ keycode 121 = XF86AudioMute NoSymbol XF86AudioMute
 keycode 122 = XF86AudioLowerVolume NoSymbol XF86AudioLowerVolume
 keycode 123 = XF86AudioRaiseVolume NoSymbol XF86AudioRaiseVolume
 
+*********************
+pdf and ebook reader is okular
 
+--------------------------
+arch will rename the network names.  Add this to udev rules.d
+/etc/udev/rules.d/70-my-net-names.rules
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}="00:1d:d9:27:68:73",NAME="wlan0"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}="00:c0:ca:6d:23:eb",NAME="wlan1"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}="00:1a:6b:d0:28:33",NAME="eth0"
+
+------------
+************************************************************************
+YOU SHOULD RECORD YOUR MOUNT PASSPHRASE AND STORE IT IN A SAFE LOCATION.
+  ecryptfs-unwrap-passphrase ~/.ecryptfs/wrapped-passphrase
+THIS WILL BE REQUIRED IF YOU NEED TO RECOVER YOUR DATA AT A LATER TIME.
+************************************************************************
+
+-------------
+go-mtpfs /root/mtp/ &
+fusermount -u mtp
+--------------
