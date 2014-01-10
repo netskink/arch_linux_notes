@@ -1,0 +1,10 @@
+bluetoothctrl
+Then these commands in order
+pairable on
+power on
+agent
+default-agent
+scan on
+connect 00:1A:7D:12:36:B9
+info 00:1A:7D:12:36:B9
+

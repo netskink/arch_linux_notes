@@ -123,6 +123,7 @@ keycode 123 = XF86AudioRaiseVolume NoSymbol XF86AudioRaiseVolume
 
 *********************
 pdf and ebook reader is okular
+a faster one is lucidor
 
 --------------------------
 arch will rename the network names.  Add this to udev rules.d
@@ -142,3 +143,34 @@ THIS WILL BE REQUIRED IF YOU NEED TO RECOVER YOUR DATA AT A LATER TIME.
 go-mtpfs /root/mtp/ &
 fusermount -u mtp
 --------------
+
+rebuild man pages 
+# mandb
+
+-------------
+bluetooth headset
+
+Find your computer's controller.
+# hciconfig
+It should show a device such as hci0.
+
+Turn on the controller.
+# hciconfig hci0 up
+
+Pairing the sb220 headset
+Turn on the sb220 from power off by holding 
+the power button down for 7seconds or more until
+it blinks blue and red
+# hcitool scan
+
+Using the device id from above issue this command to pair the device.
+Make sure you use hci0
+# bluez-simple-agent hci0 00:1A:7d:12:36:b9
+
+
+------------
+list intalled packages
+pacman -Q 
+----
+scrot and xwd is used to capture screenshots.
+
